@@ -1,0 +1,10 @@
+{
+  "src": [
+    "pages/Index",
+    "pages/Navigation",
+    "pages/Login",
+    "pages/Picture",
+    "pages/CurCamera",
+    "pages/Animatable"
+  ]
+}
