@@ -1,6 +1,8 @@
-## HarmonyOS NEXT 学习记录
+# HarmonyOS NEXT 学习记录
 
-### 环境配置
+用于记录HarmonyOS NEXT的学习。
+
+## 环境配置
 
 [官网例子](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-customized-multi-targets-and-products-guides-0000001731595144-V5#section18668905913)
 
@@ -104,9 +106,9 @@ import { ENV } from 'entry/config';
 
 ![环境修改]()![环境修改](./img/环境修改.PNG)
 
-### 构建
+## 构建
 
-#### HAP
+### HAP
 
 **HAP**（Harmony Ability Package）是应用安装和运行的基本单元。HAP包是由代码、资源、第三方库、配置文件等打包生成的模块包，其主要分为两种类型：**entry**和**feature**。
 
@@ -115,7 +117,7 @@ import { ENV } from 'entry/config';
 
 应用程序包可以只包含一个基础的**entry**包，也可以包含一个基础的**entry**包和多个功能性的**feature**包。
 
-##### 开始构建
+#### 开始构建
 
 [官网例子](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-har-0000001772704332-V5)
 
@@ -132,16 +134,16 @@ import { ENV } from 'entry/config';
 
 3. 构建完成后在以下目录**\entry\build\default\outputs**可以找到**HAR**产物
 
-### 界面
+## 界面
 
 [**ArkUI**](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkui-V5)（方舟UI框架）为应用的UI开发提供了完整的基础设施，包括简洁的UI语法、丰富的UI功能（组件、布局、动画以及交互事件），以及实时界面预览工具等，可以支持开发者进行可视化界面开发。
 
-#### 基本概念
+### 基本概念
 
 - **UI：** 即用户界面。开发者可以将应用的用户界面设计为多个功能页面，每个页面进行单独的文件管理，并通过[页面路由](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-routing-V5)API完成页面间的调度管理如跳转、回退等操作，以实现应用内的功能解耦。
 - **组件：** UI构建与显示的最小单位，如列表、网格、按钮、单选框、进度条、文本等。开发者通过多种组件的组合，构建出满足自身应用诉求的完整界面。
 
-#### 使用
+### 使用
 
 - ui界面在**build**生命周期中编写
 - 组件样式重用[**@Styles**](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-style-V5)
@@ -494,11 +496,11 @@ struct Login {
 }
 ```
 
-### 状态管理
+## 状态管理
 
 我们构建的页面多为静态界面。如果希望构建一个动态的、有交互的界面，就需要引入“状态”的概念。
 
-#### 管理组件拥有的状态
+### 管理组件拥有的状态
 
 - **[@State装饰器：组件内状态](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-state-V5)**
 - **[@Prop装饰器：父子单向同步](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-prop-V5)**
@@ -506,11 +508,11 @@ struct Login {
 - **[@Provide装饰器和@Consume装饰器：与后代组件双向同步](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-provide-and-consume-V5)**
 - **[@Observed装饰器和@ObjectLink装饰器：嵌套类对象属性变化](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-observed-and-objectlink-V5)**
 
-#### 管理应用拥有的状态
+### 管理应用拥有的状态
 
 ......
 
-#### 其他状态管理
+### 其他状态管理
 
 ......
 

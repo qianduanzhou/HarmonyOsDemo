@@ -5,6 +5,7 @@
     "pages/Login",
     "pages/Picture",
     "pages/CurCamera",
-    "pages/Animatable"
+    "pages/Animatable",
+    "pages/Library"
   ]
 }

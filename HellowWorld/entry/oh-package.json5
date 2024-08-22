@@ -6,7 +6,8 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "dayjs": "^1.11.7"
+    "dayjs": "^1.11.7",
+    "library": "file:../library"
   },
   "devDependencies": {},
   "dynamicDependencies": {}
