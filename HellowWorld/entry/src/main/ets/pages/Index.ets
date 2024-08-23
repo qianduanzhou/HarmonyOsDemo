@@ -68,6 +68,7 @@ struct Index {
         this.jumpBtn('pages/CurCamera', 'To Camera', '跳转相机页')
         this.jumpBtn('pages/Animatable', 'To Animatable', '跳转动画页')
         this.jumpBtn('pages/Library', 'To Library', '跳转引用HAR页')
+        this.jumpBtn('pages/Library2', 'To Library2', '跳转引用HSP页')
       }
       .width('100%')
     }

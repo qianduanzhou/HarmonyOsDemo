@@ -7,7 +7,8 @@
   "license": "",
   "dependencies": {
     "dayjs": "^1.11.7",
-    "library": "file:../library"
+    "library": "file:../library",
+    "library2": "file:../library2"
   },
   "devDependencies": {},
   "dynamicDependencies": {}

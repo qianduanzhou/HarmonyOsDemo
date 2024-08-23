@@ -6,6 +6,7 @@
     "pages/Picture",
     "pages/CurCamera",
     "pages/Animatable",
-    "pages/Library"
+    "pages/Library",
+    "pages/Library2"
   ]
 }

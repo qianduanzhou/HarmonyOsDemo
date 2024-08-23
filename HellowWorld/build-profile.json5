@@ -52,6 +52,18 @@
     {
       "name": "library",
       "srcPath": "./library",
+    },
+    {
+      "name": "library2",
+      "srcPath": "./library2",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }

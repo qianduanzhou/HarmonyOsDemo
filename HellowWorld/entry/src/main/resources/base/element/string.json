@@ -1,6 +1,10 @@
 {
   "string": [
     {
+      "name":"reasonReadWriteMedia",
+      "value": "上传头像"
+    },
+    {
       "name": "module_desc",
       "value": "module description"
     },
