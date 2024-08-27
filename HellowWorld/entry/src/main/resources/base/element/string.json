@@ -1,7 +1,7 @@
 {
   "string": [
     {
-      "name":"reasonReadWriteMedia",
+      "name": "reasonReadWriteMedia",
       "value": "上传头像"
     },
     {
@@ -23,6 +23,14 @@
     {
       "name": "company_en_name",
       "value": "CITIC Treated Water Into River Engineering Investment Co.,Ltd.Wuhan"
+    },
+    {
+      "name": "Singleton_desc",
+      "value": "description"
+    },
+    {
+      "name": "Singleton_label",
+      "value": "label"
     }
   ]
 }

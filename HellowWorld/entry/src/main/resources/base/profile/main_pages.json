@@ -7,6 +7,7 @@
     "pages/CurCamera",
     "pages/Animatable",
     "pages/Library",
-    "pages/Library2"
+    "pages/Library2",
+    "pages/Singleton"
   ]
 }

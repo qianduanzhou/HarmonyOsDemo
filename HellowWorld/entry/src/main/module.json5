@@ -2,6 +2,7 @@
   "module": {
     "name": "entry",
     "type": "entry",
+    "srcEntry": "./ets/myabilitystage/MyAbilityStage.ets",
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
@@ -22,6 +23,7 @@
         "startWindowIcon": "$media:startIcon",
         "startWindowBackground": "$color:start_window_background",
         "exported": true,
+        "launchType": "singleton",
         "skills": [
           {
             "entities": [
@@ -32,6 +34,16 @@
             ]
           }
         ]
+      },
+      {
+        "name": "SingletonAbility",
+        "srcEntry": "./ets/singletonAbility/SingletonAbility.ets",
+        "description": "$string:Singleton_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:Singleton_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "singleton"
       }
     ],
     "extensionAbilities": [

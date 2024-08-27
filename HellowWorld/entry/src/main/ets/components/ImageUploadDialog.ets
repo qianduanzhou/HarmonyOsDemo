@@ -61,9 +61,7 @@ export default struct ImageUploadDialog {
         return res
       }
       return true
-    }
-
-    catch (e) {
+    } catch (e) {
       return Promise.reject(e)
     }
   }
@@ -86,7 +84,7 @@ export default struct ImageUploadDialog {
     if (err) return
     let uploadTask = req.res as R;
     //上传中回调
-    uploadTask.on('progress', (size,total) => {
+    uploadTask.on('progress', (size,total)  => {
       console.log(size.toString(),total.toString(),'上传进度')
     })
 
@@ -112,7 +110,7 @@ export default struct ImageUploadDialog {
   build() {
     Column() {
       //拍照
-      Text('拍照').custText().onClick(async()=>{
+      Text('拍照').custText().onClick(async() => {
         //检查是否有读写外部媒体权限
         let res: boolean = await this.checkAppPermission()
         //无权限返回
