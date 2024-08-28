@@ -12,7 +12,6 @@ import common from '@ohos.app.ability.common'
  */
 export async function copyFileToCache(path: string,context:Context): Promise<string> {
   try {
-
     let file =  fs.openSync(path, fs.OpenMode.READ_WRITE)
     if (file) {
       let fileDir: string = `${context.cacheDir}` //临时文件目录
@@ -20,7 +19,7 @@ export async function copyFileToCache(path: string,context:Context): Promise<str
       let newPath: string =  `${new Date().getTime()}_${path.split("/")[path.split("/").length-1]}`
       let targetPath: string = `${fileDir}/${newPath}`
       fs.copyFileSync(file.fd, targetPath)
-      return  newPath
+      return newPath
     }
     else {
       return ''
