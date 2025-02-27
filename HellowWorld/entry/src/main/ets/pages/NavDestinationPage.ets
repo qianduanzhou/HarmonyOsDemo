@@ -6,10 +6,10 @@ export default struct NavDestinationPage {
     NavDestination() {
       Stack({ alignContent: Alignment.Center }) {
         Column() {
-          Text("Page NavDestination")
+          Text("页面内容")
             .fontSize(20)
             .margin({ bottom: 100 })
-          Button("Close").onClick(() => {
+          Button("关闭").onClick(() => {
             this.pageStack.pop()
           }).width('30%')
         }
@@ -20,7 +20,7 @@ export default struct NavDestinationPage {
         .width('100%')
       }.height("100%").width('100%')
     }
-    .title('Page NavDestination')
+    .title('页面标题')
     .mode(NavDestinationMode.STANDARD)
   }
 }

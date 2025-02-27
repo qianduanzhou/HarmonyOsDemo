@@ -3,6 +3,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { ENV } from 'entry/config';
 import { common, Want, EnvironmentCallback, Configuration } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
+import { bundleManager } from '@kit.AbilityKit';
 
 const TAG: string = '[CollaborateAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -59,41 +60,45 @@ struct Index {
   // 公用跳转页面按钮
   @Builder
   jumpPageBtn(path: string, text: string, info: string) {
-    Button() {
-      Text(text).fontColor('#ffffff').fontSize(16).fontWeight(FontWeight.Bold)
-    }
-    .type(ButtonType.Capsule)
-    .commonBtnStyle()
-    .onClick(() => {
-      router.pushUrl({ url: path }).then(() => {
-        console.info(info)
-      }).catch((err: BusinessError) => {
-        console.error('跳转失败:', err)
+    ListItem() {
+      Button() {
+        Text(text).fontColor('#ffffff').fontSize(16).fontWeight(FontWeight.Bold)
+      }
+      .type(ButtonType.Capsule)
+      .commonBtnStyle()
+      .onClick(() => {
+        router.pushUrl({ url: path }).then(() => {
+          console.info(info)
+        }).catch((err: BusinessError) => {
+          console.error('跳转失败:', err)
+        })
       })
-    })
+    }.width('100%')
   }
 
   // 公用跳转按钮
   @Builder
   jumpAbilityBtn(abilityName: string, text: string) {
-    Button() {
-      Text(text).fontColor('#ffffff').fontSize(16).fontWeight(FontWeight.Bold)
-    }
-    .type(ButtonType.Capsule)
-    .commonBtnStyle()
-    .onClick(() => {
-      let want: Want = {
-        bundleName: 'com.example.myapplication',
-        abilityName
-      };
+    ListItem() {
+      Button() {
+        Text(text).fontColor('#ffffff').fontSize(16).fontWeight(FontWeight.Bold)
+      }
+      .type(ButtonType.Capsule)
+      .commonBtnStyle()
+      .onClick(() => {
+        let want: Want = {
+          bundleName: 'com.example.myapplicationzhb',
+          abilityName
+        };
 
-      this.context.startAbility(want, (err: BusinessError) => {
-        if (err.code) {
-          // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
-          console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
-        }
-      });
-    })
+        this.context.startAbility(want, (err: BusinessError) => {
+          if (err.code) {
+            // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+            console.error(`Failed to startAbility. Code: ${err.code}, message: ${err.message}`);
+          }
+        });
+      })
+    }.width('100%')
   }
 
   @Styles
@@ -119,7 +124,10 @@ struct Index {
   }
 
   aboutToAppear() {
-
+    let flag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
+    let bundleInfo = bundleManager.getBundleInfoForSelfSync(flag)
+    let appId = bundleInfo.signatureInfo.appId;
+    console.log("appId", appId);
   }
 
   onDidBuild() {
@@ -138,15 +146,28 @@ struct Index {
           .fontWeight(FontWeight.Bold)
         Text(`当前环境:${ENV}`)
           .fontSize(30)
-        this.jumpPageBtn('pages/Login', 'To Login', '跳转登录页')
-        this.jumpPageBtn('pages/Picture', 'To Picture', '跳转选择图片页')
-        this.jumpPageBtn('pages/CurCamera', 'To Camera', '跳转相机页')
-        this.jumpPageBtn('pages/Animatable', 'To Animatable', '跳转动画页')
-        this.jumpPageBtn('pages/Library', 'To Library', '跳转引用HAR页')
-        this.jumpPageBtn('pages/Library2', 'To Library2', '跳转引用HSP页')
-        this.jumpAbilityBtn('SingletonAbility', 'SingletonAbility')
+        List() {
+          this.jumpPageBtn('pages/Login', 'To Login', '跳转登录页')
+          this.jumpPageBtn('pages/Picture', 'To Picture', '跳转选择图片页')
+          this.jumpPageBtn('pages/CurCamera', 'To Camera', '跳转相机页')
+          this.jumpPageBtn('pages/Animatable', 'To Animatable', '跳转动画页')
+          this.jumpPageBtn('pages/Library', 'To Library', '跳转引用HAR页')
+          this.jumpPageBtn('pages/Library2', 'To Library2', '跳转引用HSP页')
+          this.jumpPageBtn('pages/windowInWindow/Index', 'To WindowInWindow', '跳转画中画页')
+          this.jumpPageBtn('pages/Webview', 'To Webview', '跳转webview页')
+          this.jumpPageBtn('pages/Map', 'To Map', '跳转地图页')
+          this.jumpPageBtn('pages/AMapPage', 'To AMap', '跳转高德地图页')
+          this.jumpPageBtn('pages/TaskPool', 'To TaskPool', '跳转TaskPool地图页')
+          this.jumpPageBtn('pages/Worker', 'To Worker', '跳转Worker地图页')
+          this.jumpPageBtn('pages/BindSheet', 'To BindSheet', '跳转半模态转场地图页')
+          this.jumpAbilityBtn('BindSheet', 'SingletonAbility')
+        }
+        .width('100%')
+        .height('90%')
+        .padding({top: 10, bottom: 10})
       }
       .width('100%')
+      .height('100%')
     }
     .height('100%')
   }

@@ -31,9 +31,9 @@ interface RequestOptions {
 }
 
 // 返回值
-interface Result<T> {
-  err: null | BusinessError | SuccessRes<T>
-  res?: T
-}
+type Result<T> = [
+  null | BusinessError | SuccessRes<T>,
+  T?
+]
 
 export type { ApiConfig, ApiList, RequestOptions, Result, SuccessRes }

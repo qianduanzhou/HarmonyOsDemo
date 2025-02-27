@@ -8,6 +8,20 @@
     "pages/Animatable",
     "pages/Library",
     "pages/Library2",
-    "pages/Singleton"
+    "pages/Singleton",
+    "pages/NodeContainerPage",
+    "pages/AttributePage",
+    "pages/Dark",
+    "pages/ThemePage",
+    "pages/WindowStagePage",
+    "pages/WindowStage2Page",
+    "pages/SubWindow",
+    "pages/FullScreen",
+    "pages/windowInWindow/Index",
+    "pages/Webview",
+    "pages/Map",
+    "pages/TaskPool",
+    "pages/Worker",
+    "pages/BindSheet"
   ]
 }

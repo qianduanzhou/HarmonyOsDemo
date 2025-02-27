@@ -8,7 +8,9 @@
   "dependencies": {
     "dayjs": "^1.11.7",
     "library": "file:../library",
-    "library2": "file:../library2"
+    "library2": "file:../library2",
+//    "@amap/amap_lbs_common": ">=1.1.0",
+//    "@amap/amap_lbs_map3d": ">=2.1.1"
   },
   "devDependencies": {},
   "dynamicDependencies": {}

@@ -58,33 +58,24 @@ function requestApi<R, Q = undefined>(name: string, query?: Q, options?: Request
       reqInstance = new rcp.Request(url, method, headers, content);
       session.fetch(reqInstance).then((rep: rcp.Response) => {
         if (rep.statusCode === 500) {
-          let json: Result<R> = {
-            'err': {
-              success: false,
-              message: '出错了!',
-            }
-          }
-          resolve(json)
+          let res: Result<R> = [{
+            success: false,
+            message: '出错了!',
+          }]
+          resolve(res)
         } else {
           const json = rep.toJSON() as SuccessRes<R>;
           let res: Result<R>
           // 正确的请求
           if (json.success) {
-            res = {
-              err: null,
-              res: json.data
-            }
+            res = [null, json.data]
           } else {
-            res = {
-              err: json
-            }
+            res = [json]
           }
           resolve(res)
         }
       }).catch((err: BusinessError) => {
-        let json: Result<R> = {
-          'err': err
-        }
+        let json: Result<R> = [err]
         resolve(json)
       });
     } else {
@@ -101,20 +92,16 @@ function requestApi<R, Q = undefined>(name: string, query?: Q, options?: Request
       try {
         request.uploadFile(getContext(), uploadConfig).then((data: request.UploadTask) => {
           uploadTask = data;
-          let json: Result<R> = {
-            res: uploadTask as R,
-            'err': null
-          }
-          resolve(json);
+          let res: Result<R> = [null, uploadTask as R]
+          resolve(res);
         }).catch((err: BusinessError) => {
           console.error(`Failed to request the upload. Code: ${err.code}, message: ${err.message}`);
-          let json: Result<R> = {
-            'err': err
-          }
-          resolve(json)
+          let res: Result<R> = [err]
+          resolve(res)
         });
       } catch (err) {
         console.error(`Failed to request the upload. err: ${JSON.stringify(err)}`);
+        resolve([err])
       }
     }
   })

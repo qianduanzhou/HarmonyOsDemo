@@ -1,6 +1,6 @@
 import { encryption } from 'utils/encryption';
 import { promptAction, router, font } from '@kit.ArkUI';
-import request from "request";
+import requestApi from "request";
 import PageLoading from 'ets/components/PageLoading';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { preferences } from '@kit.ArkData';
@@ -77,9 +77,9 @@ struct Login {
       ver_image: string,
       ver_key: string
     }
-    let req = await request<R>('getVerCode');
-    let err = req.err;
-    let res = req.res as R;
+    let req = await requestApi<R>('getVerCode');
+    let err = req[0];
+    let res = req[1] as R;
     if (err) return
     console.info('getVerCode', res);
     this.ver_image = res.ver_image;
@@ -111,11 +111,17 @@ struct Login {
       grant_type: 'password',
       ver_code: this.ver_code
     }
-    let req = await request<R, Q>('login', query);
+    let req = await requestApi<R, Q>('login', query);
     this.isLoading = false;
-    let err = req.err;
-    if (err) return
-    let res = req.res as R;
+    let err = req[0];
+    if (err) {
+      promptAction.showToast({
+        message: err.message,
+        duration: 1500
+      })
+      return
+    }
+    let res = req[1] as R;
     let token = 'Bearer ' + res.access_token;
 
     dataPreferences?.putSync('token', token);
@@ -125,7 +131,7 @@ struct Login {
       duration: 1500
     })
     setTimeout(() => {
-      router.pushUrl({ url: 'pages/Home' }).then(() => {
+      router.pushUrl({ url: 'pages/Navigation' }).then(() => {
         console.info('跳转首页')
       }).catch((err: BusinessError) => {
         console.error('跳转失败:', err)

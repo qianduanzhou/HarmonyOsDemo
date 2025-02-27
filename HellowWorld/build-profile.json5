@@ -1,12 +1,44 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:/HarmonyKey/cer/harmonySign_test.cer",
+          "storePassword": "0000001C48EF666C4B65A8F52374F6B3CBB4EC2BC6783A168DB3B2818FE78E64D7C8C783D6650E0B8517568B",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001C85F69526AEAA2E3AE103A075709DC702A8E0EBB16FE0CBDC0627728EE00EE661B2CC13305332712F",
+          "profile": "C:/HarmonyKey/profile/Debug_ProfileDebug.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:/HarmonyKey/keystore/app_debug.p12"
+        }
+      },
+      {
+        "name": "test",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\smart\\.ohos\\config\\test_HellowWorld_iwsbLuJL_WfXduqtUyHV6ARNov5a7RbDGQWd-iXCfCc=.cer",
+          "storePassword": "0000001A33C7CA7D1232023503703CFC5936861C9DBA7D8DB42F500D1C01F9E3FB6C8E431EDBD905F503",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001A4E2F9DCB3D88CDE3DB2C53513BD2100709A6E18C75242E087EFD106984AE5D98671B1977023E",
+          "profile": "C:\\Users\\smart\\.ohos\\config\\test_HellowWorld_iwsbLuJL_WfXduqtUyHV6ARNov5a7RbDGQWd-iXCfCc=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\smart\\.ohos\\config\\test_HellowWorld_iwsbLuJL_WfXduqtUyHV6ARNov5a7RbDGQWd-iXCfCc=.p12"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
-        "signingConfig": "default",
+        "signingConfig": "test",
         "compatibleSdkVersion": "5.0.0(12)",
         "runtimeOS": "HarmonyOS",
+        "buildOption": {
+          "strictMode": {
+            "useNormalizedOHMUrl": true
+          }
+        }
       },
     ],
     "buildModeSet": [

@@ -3,6 +3,18 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "txtColor",
+      "value": "#000000"
+    },
+    {
+      "name": "brand",
+      "value": "#FF75D9"
+    },
+    {
+      "name": "brand_purple",
+      "value": "#510CAA"
     }
   ]
 }

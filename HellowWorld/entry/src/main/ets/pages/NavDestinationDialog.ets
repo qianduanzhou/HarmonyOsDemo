@@ -6,10 +6,10 @@ export default struct NavDestinationDialog {
     NavDestination() {
       Stack({ alignContent: Alignment.Center }) {
         Column() {
-          Text("Dialog NavDestination")
+          Text("弹框内容")
             .fontSize(20)
             .margin({ bottom: 100 })
-          Button("Close").onClick(() => {
+          Button("关闭").onClick(() => {
             this.pageStack.pop()
           }).width('30%')
         }

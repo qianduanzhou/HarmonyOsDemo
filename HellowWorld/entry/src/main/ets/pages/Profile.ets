@@ -1,8 +1,11 @@
 @Component
 export default struct Profile {
   build() {
-    Column() {
-      Text('Profile')
-    }
+    NavDestination() {
+      Column() {
+        Text('Profile')
+      }
+    }.mode(NavDestinationMode.STANDARD)
+    .hideTitleBar(true)
   }
 }

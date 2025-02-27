@@ -1,8 +1,11 @@
 @Component
 export default struct Scan {
   build() {
-    Column() {
-      Text('Scan')
-    }
+    NavDestination() {
+      Column() {
+        Text('Scan')
+      }
+    }.mode(NavDestinationMode.STANDARD)
+    .hideTitleBar(true)
   }
 }

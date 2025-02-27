@@ -1,4 +1,3 @@
-import requestApi from "request";
 import Home from './Home';
 import Scan from './Scan';
 import Profile from './Profile';
@@ -37,7 +36,12 @@ let toolBars: Array<ToolBar> = [{
 struct NavigationPage {
   // 创建一个页面栈对象并传入Navigation
   @Provide('NavPathStack') pageStack: NavPathStack = new NavPathStack()
+  @Provide('ChildNavPathStack') childPageStack: NavPathStack = new NavPathStack()
   @State activeTool: string = 'Home';
+
+  aboutToAppear() {
+    this.childPageStack.replacePathByName('Home', '')
+  }
 
   @Builder
   toolBarsBuilder() {
@@ -47,7 +51,8 @@ struct NavigationPage {
           Image(this.activeTool === item.value ? item.activeIcon : item.icon).width(24).aspectRatio(1)
           Text(item.name)
         }.onClick(() => {
-          this.activeTool = item.value;
+          this.activeTool = item.value
+          this.childPageStack.replacePathByName(item.value, '')
         })
       })
     }.width('100%').justifyContent(FlexAlign.SpaceAround)
@@ -60,16 +65,23 @@ struct NavigationPage {
       NavDestinationPage();
     }
   }
+  // 子页面跳转
+  @Builder childNavDestination(name: string) {
+    if (name === 'Home') {
+      Home();
+    } else if (name === 'Scan') {
+      Scan()
+    } else if (name === 'Profile') {
+      Profile()
+    }
+  }
   build() {
     Navigation(this.pageStack) {
-      // 内部页面
-      if (this.activeTool === 'Home') {
-        Home();
-      } else if (this.activeTool === 'Scan') {
-        Scan();
-      } else {
-        Profile();
-      }
+      Navigation(this.childPageStack) {
+      }.mode(NavigationMode.Auto)
+      .hideTitleBar(true)
+      .hideToolBar(true)
+      .navDestination(this.childNavDestination)
     }.mode(NavigationMode.Auto)
     .toolbarConfiguration(this.toolBarsBuilder)
     .hideTitleBar(true)

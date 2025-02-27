@@ -7,6 +7,7 @@ import camerapicker from '@ohos.multimedia.cameraPicker';
 import { BusinessError } from '@ohos.base';
 import { common } from '@kit.AbilityKit';
 import requestApi from 'request';
+import { Result } from "entry/request/type";
 
 //上传回调数据类型
 interface ReceiveRes {
@@ -80,9 +81,9 @@ export default struct ImageUploadDialog {
       type: filenameSplit[1]
     }];
     let req = await requestApi<R, Q>(this.apiName, query);
-    let err = req.err;
+    let err = req[0];
     if (err) return
-    let uploadTask = req.res as R;
+    let uploadTask = req[1] as R;
     //上传中回调
     uploadTask.on('progress', (size,total)  => {
       console.log(size.toString(),total.toString(),'上传进度')
